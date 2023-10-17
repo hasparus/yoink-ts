@@ -2,7 +2,7 @@
   "name": "yoink-ts",
   "description": "print a type into an existing file to avoid circular `any`",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "hasparus",
   "license": "ISC",
   "main": "dist/index.mjs",
@@ -12,7 +12,9 @@
   },
   "devDependencies": {
     "@tsconfig/strictest": "^2.0.2",
-    "@types/node": "^20.8.6",
+    "@types/node": "^20.8.6"
+  },
+  "dependencies": {
     "typescript": "^5"
   }
 }
