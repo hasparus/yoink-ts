@@ -1,15 +1,23 @@
-# yoink-ts
+This would have been just a `ReturnType<typeof myFunction>`, but I needed to
+declaration merge the inferred result with `process.env` which was used inside of the function, resulting in `any`.
 
-To install dependencies:
-
-```bash
-bun install
+```js
+// env.mjs
+const env = required({
+  SOME_ENV_VAR: process.env.SOME_ENV_VAR,
+});
 ```
 
-To run:
+```ts
+// types.d.ts
+import { env } from "./env.mjs";
 
-```bash
-bun run index.mjs
+interface Env {
+  SOME_ENV_VAR: string;
+}
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv extends Env {}
+  }
+}
 ```
-
-This project was created using `bun init` in bun v1.0.4. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
